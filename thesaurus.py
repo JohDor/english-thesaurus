@@ -8,7 +8,8 @@ def translate(w):
         return data[w]
     elif w.title() in data:
         return data[w.title()]
-    elif w.upper() in data: #in case user enters words like USA or NATO
+    #Acronyms without separators (ex. USA not U.S.A. nor U S A)
+    elif w.upper() in data: 
         return data[w.upper()]
     elif len(get_close_matches(w, data.keys())) > 0:
         yn = input("Did you mean %s instead? Enter Y if yes, or N if no: " % get_close_matches(w, data.keys())[0])
